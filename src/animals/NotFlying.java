@@ -1,17 +1,17 @@
-package Animal;
+package animals;
 
 import java.util.Objects;
 
-class Flying extends Birds{
-    private String movementType;
+class NotFlying extends Birds {
+    private final String movementType;
 
-    public static void fly(){
-        System.out.println("Я могу летать");
+    public static void stroll(){
+        System.out.println("Я могу гулять");
     }
 
-    public Flying(String name, int year, String livingEnvironment, String movementType) {
+    public NotFlying(String name, int year, String livingEnvironment, String movementType) {
         super(name, year, livingEnvironment);
-        this.movementType = ValidationUtils.validOrDefault(movementType, "летаю");
+        this.movementType = ValidationUtils.validOrDefault(movementType, "хожу пешком");
     }
 
     @Override
@@ -19,8 +19,8 @@ class Flying extends Birds{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Flying flying = (Flying) o;
-        return Objects.equals(movementType, flying.movementType);
+        NotFlying notFlying = (NotFlying) o;
+        return Objects.equals(movementType, notFlying.movementType);
     }
 
     @Override
@@ -37,7 +37,7 @@ class Flying extends Birds{
                 "Birds{" +
                 "livingEnvironment='" + getLivingEnvironment() + '\'' +
                 '}'+
-                "Flying{" +
+                "NotFlying{" +
                 "movementType='" + movementType + '\'' +
                 '}';
     }

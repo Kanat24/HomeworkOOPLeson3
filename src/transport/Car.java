@@ -19,7 +19,7 @@ public class Car extends Transport {
                int maxSpeed, double engineVolume, String transmission, String bodyType, String registrationNumber,
                int numberOfSeats, boolean summerTires, Key key, Insurance insurance) {
         super(brand, model, productionYear, color, productionCountry, maxSpeed);
-      this.engineVolume = engineVolume > 0 ? engineVolume : 1.5;
+        this.engineVolume = engineVolume > 0 ? engineVolume : 1.5;
         this.transmission = ValidationUtils.validOrDefault(transmission, "default");
         this.bodyType = ValidationUtils.validOrDefault(bodyType, "default");
         this.registrationNumber = ValidationUtils.validOrDefault(registrationNumber, "x000хх000");
@@ -82,20 +82,22 @@ public class Car extends Transport {
             this.transmission = transmission;
         }
     }
+
     public boolean correctNumber() {
-        if (registrationNumber.length()!=9){
+        if (registrationNumber.length() != 9) {
             return false;
         }
-        char [] chars = registrationNumber.toCharArray();
-        if (!Character.isAlphabetic(chars[0]) || !Character.isAlphabetic(chars[4])|| !Character.isAlphabetic(chars[5])){
+        char[] chars = registrationNumber.toCharArray();
+        if (!Character.isAlphabetic(chars[0]) || !Character.isAlphabetic(chars[4]) || !Character.isAlphabetic(chars[5])) {
             return false;
         }
         if (!Character.isDigit(chars[1]) || !Character.isDigit(chars[2]) || !Character.isDigit(chars[3]) ||
-                !Character.isDigit(chars[6]) ||!Character.isDigit(chars[7]) || !Character.isDigit(chars[8])){
+                !Character.isDigit(chars[6]) || !Character.isDigit(chars[7]) || !Character.isDigit(chars[8])) {
             return false;
         }
         return true;
     }
+
     public void setRegistrationNumber(String registrationNumber) {
         if (registrationNumber == null || !correctNumber()) {
             this.registrationNumber = "x000хх000";
@@ -108,33 +110,46 @@ public class Car extends Transport {
         this.summerTires = summerTires;
     }
 
-    public boolean changeTires(){
-        summerTires=!summerTires;
+    public boolean changeTires() {
+        summerTires = !summerTires;
         return summerTires;
     }
 
     @Override
     public void refill() {
-        System.out.println(brand+ " можно заправлять бензином, дизелем на заправке или заряжать" +
+        System.out.println(brand + " можно заправлять бензином, дизелем на заправке или заряжать" +
                 " на специальных электропарковках, если это электрокар.");
 
     }
 
+    @Override
+    public String toString() {
+        return "Car{" + super.toString()+
+                "engineVolume=" + engineVolume +
+                ", transmission='" + transmission + '\'' +
+                ", bodyType='" + bodyType + '\'' +
+                ", registrationNumber='" + registrationNumber + '\'' +
+                ", numberOfSeats=" + numberOfSeats +
+                ", summerTires=" + summerTires +
+                ", key=" + key +
+                ", insurance=" + insurance +
+                '}';
+    }
 
-    public  static class Insurance {
+    public static class Insurance {
         private final LocalDate validity;
         private final float price;
         private final String number;
 
 
         public Insurance(LocalDate validity, int price, String number) {
-            if (validity==null){
-                this.validity=LocalDate.now().plusDays(365);
-            }else {
+            if (validity == null) {
+                this.validity = LocalDate.now().plusDays(365);
+            } else {
                 this.validity = validity;
             }
             this.price = Math.max(price, 1f);
-                this.number = ValidationUtils.validOrDefault(number, "default");
+            this.number = ValidationUtils.validOrDefault(number, "default");
         }
 
         public Insurance() {
@@ -154,7 +169,7 @@ public class Car extends Transport {
         }
 
         public void verifyValidity() {
-            if (validity.isBefore(LocalDate.now()) || validity.isEqual(LocalDate.now())){
+            if (validity.isBefore(LocalDate.now()) || validity.isEqual(LocalDate.now())) {
                 System.out.println("нужно срочно ехать оформлять новую страховку.");
             }
         }
@@ -174,6 +189,7 @@ public class Car extends Transport {
                     '}';
         }
     }
+
     public static class Key {
         private boolean remoteEnginestart;
         private boolean keylessEntry;
@@ -187,6 +203,7 @@ public class Car extends Transport {
             this.keylessEntry = keylessEntry;
 
         }
+
         public boolean isRemoteEnginestart() {
             return remoteEnginestart;
         }

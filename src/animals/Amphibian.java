@@ -1,11 +1,11 @@
-package Animal;
+package animals;
 
 import java.util.Objects;
 
-class Amphibians extends Animals {
+ class Amphibian extends Animal {
     private String livingEnvironment;
 
-    public Amphibians(String name, int year, String livingEnvironment) {
+    public Amphibian(String name, int year, String livingEnvironment) {
         super(name, year);
         this.livingEnvironment = ValidationUtils.validOrDefault(livingEnvironment, "Обычная");
     }
@@ -44,7 +44,7 @@ class Amphibians extends Animals {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Amphibians that = (Amphibians) o;
+        Amphibian that = (Amphibian) o;
         return Objects.equals(livingEnvironment, that.livingEnvironment);
     }
 

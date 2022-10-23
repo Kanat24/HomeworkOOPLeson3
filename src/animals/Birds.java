@@ -1,8 +1,8 @@
-package Animal;
+package animals;
 
 import java.util.Objects;
 
-class Birds extends Animals {
+abstract class Birds extends Animal {
     private String livingEnvironment;
 
     public Birds(String name, int year, String livingEnvironment) {
