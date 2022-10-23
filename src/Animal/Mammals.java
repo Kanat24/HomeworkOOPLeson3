@@ -2,7 +2,7 @@ package Animal;
 
 import java.util.Objects;
 
-class Mammals extends Animals{
+abstract class Mammals extends Animals{
     private  String livingEnvironment;
     private int speed;
 
