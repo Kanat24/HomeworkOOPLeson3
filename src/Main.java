@@ -3,8 +3,16 @@ import transport.Car;
 import transport.Train;
 import transport.Transport;
 
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
+        Car lada = new Car("Lada", "Granta", 2015, "желтый", "Russia",
+                180, 1.6, "Automat", "sedan", "A340AO142",
+                5, true, new Car.Key(true, true),
+                new Car.Insurance(LocalDate.now().plusMonths(3), 1000, "121212121"));
+        System.out.println(lada);
+
         Train martin = new Train("Ласточка", "B-901", 2011, "", "",
                 301, 3500, 0, "Белорусский вокзал",
                 "Mинск-Пассажирский", 11);

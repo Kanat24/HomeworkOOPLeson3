@@ -1,16 +1,17 @@
-package Animal;
+package animals;
 
 import java.util.Objects;
 
- class Amphibians extends Animals {
+abstract class Birds extends Animal {
     private String livingEnvironment;
 
-    public Amphibians(String name, int year, String livingEnvironment) {
+    public Birds(String name, int year, String livingEnvironment) {
         super(name, year);
         this.livingEnvironment = ValidationUtils.validOrDefault(livingEnvironment, "Обычная");
     }
     public static void hunt(){
         System.out.println("Я охочусь");
+
     }
 
     @Override
@@ -34,7 +35,7 @@ import java.util.Objects;
                 "name='" + getName() + '\'' +
                 ", year=" + getYear() +
                 '}'+
-                "Amphibians{" +
+                "Birds{" +
                 "livingEnvironment='" + livingEnvironment + '\'' +
                 '}';
     }
@@ -44,8 +45,8 @@ import java.util.Objects;
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Amphibians that = (Amphibians) o;
-        return Objects.equals(livingEnvironment, that.livingEnvironment);
+        Birds birds = (Birds) o;
+        return Objects.equals(livingEnvironment, birds.livingEnvironment);
     }
 
     @Override

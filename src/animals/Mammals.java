@@ -1,8 +1,8 @@
-package Animal;
+package animals;
 
 import java.util.Objects;
 
-abstract class Mammals extends Animals{
+abstract class Mammals extends Animal {
     private  String livingEnvironment;
     private int speed;
 

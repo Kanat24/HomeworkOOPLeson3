@@ -1,17 +1,18 @@
-package Animal;
+package animals;
 
 import java.util.Objects;
 
-class Herbivores extends  Mammals{
+class Predator extends Mammals{
     private String typeOfFood;
 
-public static void pasture(){
-    System.out.println("Я могу пастись");
-}
+    public static void hunt(){
+        System.out.println("Я могу охотиться");
 
-    public Herbivores(String name, int year, String livingEnvironment, int speed, String typeOfFood) {
+    }
+
+    public Predator(String name, int year, String livingEnvironment, int speed, String typeOfFood) {
         super(name, year, livingEnvironment, speed);
-        this.typeOfFood = ValidationUtils.validOrDefault(typeOfFood, "Питаюсь травой");;
+        this.typeOfFood = ValidationUtils.validOrDefault(typeOfFood, "Питаюсь мясом");
     }
 
     public String getTypeOfFood() {
@@ -23,8 +24,8 @@ public static void pasture(){
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Herbivores that = (Herbivores) o;
-        return Objects.equals(typeOfFood, that.typeOfFood);
+        Predator predators = (Predator) o;
+        return Objects.equals(typeOfFood, predators.typeOfFood);
     }
 
     @Override
@@ -42,7 +43,7 @@ public static void pasture(){
                 "livingEnvironment='" + getLivingEnvironment() + '\'' +
                 ", speed=" + getSpeed() +
                 '}'+
-                "Herbivores{" +
+                "Predators{" +
                 "typeOfFood='" + typeOfFood + '\'' +
                 '}';
     }

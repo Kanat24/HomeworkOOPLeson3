@@ -1,4 +1,4 @@
-package Animal;
+package animals;
 
 class ValidationUtils {
     public static String validOrDefault(String value, String defaultValue){

@@ -1,8 +1,8 @@
-package Animal;
+package animals;
 
 import java.util.Objects;
 
-abstract class Animals {
+abstract class Animal {
     private String name;
     private int year;
 
@@ -19,7 +19,7 @@ abstract class Animals {
     }
 
     public void setName(String name) {
-        this.name = ValidationUtils.validOrDefault(name, "Animal");
+        this.name = ValidationUtils.validOrDefault(name, "animals");
     }
 
     public int getYear() {
@@ -30,7 +30,7 @@ abstract class Animals {
         this.year = year > 0 ? year : 1;
     }
 
-    public Animals(String name, int year) {
+    protected Animal(String name, int year) {
         setName(name);
         setYear(year);
     }
@@ -47,7 +47,7 @@ abstract class Animals {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Animals animals = (Animals) o;
+        Animal animals = (Animal) o;
         return year == animals.year && Objects.equals(name, animals.name);
     }
 
